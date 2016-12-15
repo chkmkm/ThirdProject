@@ -7,9 +7,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 	function onlynum() {
@@ -85,7 +85,7 @@
 		<div class="cont_mid">
 			<div class="cont">
 				<div class="form-group">
-					<input type="text" name="id" id="joinId" class="form-control" placeholder="아이디를 입력해주세요." onkeypress="onlyeng();"/>
+					<input type="text" name="id" id="joinId" class="form-control" placeholder="아이디를 입력해주세요."/>
 					<span class="joinId"></span>
 				</div>
 				<div class="form-group">

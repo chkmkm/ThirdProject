@@ -26,12 +26,12 @@ public class UserJoinCon {
 	
 	@RequestMapping("/gaip")
 	public String userIn(){
-		return "gaip";
+		return "join/gaip";
 	}
 	
 	@RequestMapping("/joinform")
 	public String joinForm(){
-		return "joinform";
+		return "join/joinform";
 	}
 	
 	@RequestMapping("/joincheck")
@@ -51,18 +51,8 @@ public class UserJoinCon {
 	@RequestMapping("/join")
 	public String joinInsert(UserJoinVo bean){
 		UserJoinDao mapper = sqlSession.getMapper(UserJoinDao.class);
-		System.out.println(bean);
 		mapper.userInsert(bean);
 		return "redirect:/";
 	}
-	
-	@RequestMapping("/test")
-	public void test(Model model){
-		UserJoinDao mapper = sqlSession.getMapper(UserJoinDao.class);
-		List<UserJoinVo> list = mapper.userSelOne("cccc");
-		Long temp = list.get(0).getPhone();
-		System.out.println(temp);
-	}
-	
 	
 }

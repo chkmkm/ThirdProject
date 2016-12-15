@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="./gaip">가입</a></li>
-            <li><a href="./test">Contact</a></li>
+            <li><a href="./logform">로그인</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -42,7 +42,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
+        <h1><%=session.getAttribute("log") %> &nbsp <a href="./logout">로그아웃</a></h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
