@@ -7,7 +7,7 @@
   	SELECT COUNT(*) AS CNT FROM CUSTOMER WHERE ID=#{id} AND PW=#{pw}
   	</select>
   	<select id="logIn" parameterType="com.gl.market.model.UserJoinVo" resultType="com.gl.market.model.UserJoinVo">
-  	SELECT ID FROM CUSTOMER WHERE ID=#{id} AND PW=#{pw}
+  	SELECT ID,NAME FROM CUSTOMER WHERE ID=#{id} AND PW=#{pw}
   	</select>
   	<select id="selId" parameterType="com.gl.market.model.UserJoinVo" resultType="com.gl.market.model.UserJoinVo">
   	SELECT ID FROM CUSTOMER WHERE NAME=#{name} AND PHONE=#{phone}

@@ -21,6 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Project name</a>
         </div>
@@ -29,6 +30,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="./gaip">가입</a></li>
             <li><a href="./logform">로그인</a></li>
+            <li><a href="./mylist">마이페이지</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -42,7 +44,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1><%=session.getAttribute("log") %> &nbsp <a href="./logout">로그아웃</a></h1>
+        <h1>${name } &nbsp <a href="./logout">로그아웃</a></h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 

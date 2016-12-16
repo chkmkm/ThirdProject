@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.gl.market.model.UserMypageDao">
+  	<select id="userOne" parameterType="String" resultType="com.gl.market.model.UserJoinVo">
+  	SELECT ID,NAME,PW,PHONE FROM CUSTOMER WHERE ID=#{value}
+  	</select>
+  	<select id="copList" parameterType="String" resultType="com.gl.market.model.UserCopVo">
+  	SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM COUPON WHERE USID=#{value}
+  	</select>
+  	<select id="mileCk" parameterType="String" resultType="com.gl.market.model.UserJoinVo">
+  	SELECT CASH FROM CUSTOMER WHERE ID=#{value}
+  	</select>
+  	<select id="copCk" parameterType="String" resultType="int">
+  	SELECT COUNT(*) AS CNT FROM COUPON WHERE USID=#{value}
+  	</select>
+  	<update id="userUp" parameterType="com.gl.market.model.UserJoinVo">
+  	UPDATE CUSTOMER SET PW=#{pw} WHERE ID=#{id}
+  	</update>
+  </mapper>

@@ -52,9 +52,11 @@ public class UserLoginCon {
 	public String login(UserJoinVo bean, Model model, HttpServletRequest req){
 		UserLoginDao mapper = sqlSession.getMapper(UserLoginDao.class);
 		List<UserJoinVo> list = mapper.logIn(bean);
-		String sess = list.get(0).getId();
+		String id = list.get(0).getId();
+		String name = list.get(0).getName();
 		session = req.getSession();
-		session.setAttribute("log", sess);
+		session.setAttribute("id", id);
+		session.setAttribute("name", name);
 		
 		return "redirect:/";
 	}
