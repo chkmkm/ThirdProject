@@ -27,6 +27,18 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>	
 	</filter-mapping>
+	
+
+	<!-- 레스트풀 적용을 위한 필터링 -->
+	<filter>
+	    <filter-name>httpMethodFilter</filter-name>
+	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+	    <filter-name>httpMethodFilter</filter-name>
+	    <servlet-name>appServlet</servlet-name>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>

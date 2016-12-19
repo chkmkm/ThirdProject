@@ -42,6 +42,10 @@
 			window.location.replace("./newpw?id="+id+"&pw="+pw);
 		});
 		
+		$('#newIdch').click(function() {
+			window.location.replace("./logform");
+		});
+		
 		$('#idbtn').click(function() {
 			
 			$('span').text("");
@@ -158,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary logback">확인</button>
+					<button type="button" id="newIdch" class="btn btn-primary logback">확인</button>
 				</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->

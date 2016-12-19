@@ -14,18 +14,23 @@
 
 	function onlynum() {
 		if ((event.keyCode<48)||(event.keyCode>57)){
-			alert ("숫자로 입력해주세요.");
+			$('.joinPhone').text("숫자만 입력해주세요.");
+			//alert ("숫자로 입력해주세요.");
 		    event.returnValue = false;	
-		   }
+		}
 	};
 	
 	$(document).ready(function() {
-		
 		
 		$('#nextbtn').click(function() {
 			$('span').text("");
 			if($('#joinId').val() == ""){
 				$('.joinId').text("아이디를 입력해주세요.");
+				$('.joinId').focus();
+				return;
+			}
+			if(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test($('#joinId').val())){
+				$('.joinId').text("영문자 혹은 숫자만 입력해주세요.");
 				$('.joinId').focus();
 				return;
 			}
@@ -36,6 +41,11 @@
 			}
 			if($('#joinPw').val() == ""){
 				$('.joinPw').text("비밀번호를 입력해주세요.");
+				$('.joinPw').focus();
+				return;
+			}
+			if($('#joinPw').val().length<8 || $('#joinPw').val().length>20){
+				$('.joinPw').text("비밀번호를 8~20자 이내에 입력해주세요.");
 				$('.joinPw').focus();
 				return;
 			}

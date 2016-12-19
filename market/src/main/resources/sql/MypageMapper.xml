@@ -6,8 +6,8 @@
   	<select id="userOne" parameterType="String" resultType="com.gl.market.model.UserJoinVo">
   	SELECT ID,NAME,PW,PHONE FROM CUSTOMER WHERE ID=#{value}
   	</select>
-  	<select id="copList" parameterType="String" resultType="com.gl.market.model.UserCopVo">
-  	SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM COUPON WHERE USID=#{value}
+  	<select id="copList" parameterType="hashmap" resultType="com.gl.market.model.UserCopVo">
+  	SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM (SELECT ROWNUM AS RN, A.* FROM (SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM COUPON WHERE USID=#{id})A) WHERE RN BETWEEN #{stert} AND #{end} ORDER BY CPID ASC 
   	</select>
   	<select id="mileCk" parameterType="String" resultType="com.gl.market.model.UserJoinVo">
   	SELECT CASH FROM CUSTOMER WHERE ID=#{value}
@@ -15,7 +15,10 @@
   	<select id="copCk" parameterType="String" resultType="int">
   	SELECT COUNT(*) AS CNT FROM COUPON WHERE USID=#{value}
   	</select>
-  	<update id="userUp" parameterType="com.gl.market.model.UserJoinVo">
-  	UPDATE CUSTOMER SET PW=#{pw} WHERE ID=#{id}
+  	<update id="userUpdata" parameterType="com.gl.market.model.UserJoinVo">
+  	UPDATE CUSTOMER SET PW=#{pw},NAME=#{name},PHONE=#{phone} WHERE ID=#{id}
+  	</update>
+  	<update id="userDelete" parameterType="String">
+  	DELETE FROM CUSTOMER WHERE ID=#{value}
   	</update>
   </mapper>

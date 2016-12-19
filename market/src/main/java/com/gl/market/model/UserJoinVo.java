@@ -5,7 +5,7 @@ public class UserJoinVo {
 	private String id;
 	private String pw;
 	private String name;
-	private Long phone;
+	private String phone;
 	private int cash;
 	private String grade;
 	private int tcash;
@@ -16,7 +16,7 @@ public class UserJoinVo {
 	}
 
 
-	public UserJoinVo(String id, String pw, String name, Long phone, int cash,
+	public UserJoinVo(String id, String pw, String name, String phone, int cash,
 			String grade, int tcash) {
 		super();
 		this.id = id;
@@ -59,12 +59,12 @@ public class UserJoinVo {
 	}
 
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

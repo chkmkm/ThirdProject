@@ -2,6 +2,8 @@ package com.gl.market.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,13 +81,11 @@ public class UserLoginCon {
 	}
 	
 	@RequestMapping("/selid")
-	public void selId(UserJoinVo bean, Model model, HttpServletResponse resp){
+	public void selId(UserJoinVo data, Model model, HttpServletResponse resp){
 		UserLoginDao mapper = sqlSession.getMapper(UserLoginDao.class);
-		List<UserJoinVo> list = mapper.selId(bean);
+		UserJoinVo bean = mapper.selId(data);
 		String id="";
-		if(list.size()>0){
-			id=list.get(0).getId();
-		}
+		id=bean.getId();
 		try {
 			PrintWriter out = resp.getWriter();
 			out.print(id);

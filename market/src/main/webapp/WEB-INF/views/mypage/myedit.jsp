@@ -50,23 +50,13 @@
 				$('.editPhone').focus();
 				return;
 			}
-			
-// 			$.ajax({
-// 				'url':'./editcheck?id='+$('#editId').val(),
-// 				'error' : function(jqXHR, textStatus) {
-// 					alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);},
-// 				'success' : function(data) {
-// 					var msg = (data);
-// 					if(msg>0){
-// 						alert("이미 존재하는 아이디입니다.");
-// 					}else{
-// 						$('#editform').attr('method','post');
-// 				        $('#editform').attr('action','./edit');
-// 				        $('#editform').submit();
-// 					}
-// 				}
-// 			});
-			
+			if (confirm("회원정보를 수정 하시겠습니까?")) {
+				$('#editform').attr('method','post');
+				$('#editform').attr('action','./edit');
+				$('#editform').submit();
+	        }else {
+	            return false;
+	        }
 		});
 	});
 </script>

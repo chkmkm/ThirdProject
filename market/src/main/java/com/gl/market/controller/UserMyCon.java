@@ -2,6 +2,7 @@ package com.gl.market.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,13 +38,31 @@ public class UserMyCon {
 		return "mypage/julist";
 	}
 	
+	@RequestMapping("/outform")
+	public String outForm(){
+		return "mypage/outform";
+	}
+	
 	@RequestMapping("/coplist")
-	public String copList(Model model, HttpServletRequest req){
+	public String copList(@RequestParam("idx")int idx ,Model model, HttpServletRequest req){
 		session = req.getSession();
+		int p=idx;
+		int row = 5;
+		int rowTot=1;
+		int stert = (p-1)*row+1;
+		int end = stert+(row-1);
 		String id = (String)session.getAttribute("id");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("stert", stert);
+		map.put("end", end);
+		System.out.println(map.get("id")+":"+map.get("stert")+":"+map.get("end"));
 		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
-		List<UserCopVo> list = mapper.copList(id);
-		System.out.println(list.get(0));
+		rowTot = mapper.copCk(id);
+		List<UserCopVo> list = mapper.copList(map);
+		int pTot = (rowTot-1)/row+1;
+		
+		model.addAttribute("pTot", pTot);
 		model.addAttribute("coplist", list);
 		return "mypage/coplist";
 	}
@@ -59,6 +78,7 @@ public class UserMyCon {
 			System.out.println("프린트 오류");
 		}
 	}
+	
 	@RequestMapping("/copcheck")
 	public void copCheck(@RequestParam("id")String id, HttpServletResponse resp){
 		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
@@ -66,6 +86,18 @@ public class UserMyCon {
 		try {
 			PrintWriter out = resp.getWriter();
 			out.print(cop);
+		} catch (IOException e) {
+			System.out.println("프린트 오류");
+		}
+	}
+	
+	@RequestMapping("/pwcheck")
+	public void pwCheck(@RequestParam("id")String id, HttpServletResponse resp){
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		UserJoinVo bean = mapper.userOne(id); 
+		try {
+			PrintWriter out = resp.getWriter();
+			out.print(bean.getPw());
 		} catch (IOException e) {
 			System.out.println("프린트 오류");
 		}
@@ -79,6 +111,25 @@ public class UserMyCon {
 		UserJoinVo bean = mapper.userOne(id);
 		req.setAttribute("bean", bean);
 		return "mypage/myedit";
+	}
+	
+	@RequestMapping("/edit")
+	public String edit(UserJoinVo bean,HttpServletRequest req){
+		session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		mapper.userUpdata(bean);
+		return "redirect:./editform";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest req){
+		session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		mapper.userDelete(id);
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 }

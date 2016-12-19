@@ -30,15 +30,12 @@
 		$.ajax({
 			'url':'./cashcheck?id='+id,
 			'error' : function(jqXHR, textStatus) {
-				alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);},
+				alert("마일리지를 불러오지 못하였습니다.");
+// 				alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);
+				},
 			'success' : function(data) {
 				var msg = (data);
-				if(msg>0){
-					$('.mile').text(msg);
-				}else{
-					alert("마일리지를 불러오지 못하였습니다.");
-				}
-				
+				$('.mile').text(msg);
 			}
 		});
 		
@@ -48,11 +45,7 @@
 				alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);},
 			'success' : function(data) {
 				var msg = (data);
-				if(msg>0){
-					$('.coupon').text(msg);
-				}else{
-					alert("실패");
-				}
+				$('.coupon').text(msg);
 				
 			}
 		}); // copcheck end
@@ -63,7 +56,7 @@
 <body>
 	<div class="cont_side">
 		<div class="side_head">
-			<p><%=session.getAttribute("name") %>님의 마이페이지</p>
+			<p>${name }님의 마이페이지</p>
 			<p>적립금<span class="mile">0</span>Point</p>
 			<p>보유쿠폰<span class="coupon">0</span>개</p>
 		</div>
@@ -86,7 +79,7 @@
 				<a href="./editform">개인정보수정</a>
 			</div>
 			<div class="menu_cont">
-				<a href="#">회원탈퇴</a>
+				<a href="./outform">회원탈퇴</a>
 			</div>
 			<div class="menu_head">고객센터</div>
 		</div>

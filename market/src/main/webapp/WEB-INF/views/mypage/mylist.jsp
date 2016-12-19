@@ -25,11 +25,7 @@
 					alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);},
 				'success' : function(data) {
 					var msg = (data);
-					if(msg>0){
-						$('.mile').text(msg);
-					}else{
-						alert("실패");
-					}
+					$('.mile').text(msg);
 					
 				}
 			}); // cashcheck end
@@ -40,11 +36,7 @@
 					alert("통신실패 " + textStatus + "(code): "	+ jqXHR.status);},
 				'success' : function(data) {
 					var msg = (data);
-					if(msg>0){
-						$('.coupon').text(msg);
-					}else{
-						alert("실패");
-					}
+					$('.coupon').text(msg);
 					
 				}
 			}); // copcheck end
@@ -96,7 +88,7 @@
           <a href="./editform">개인정보수정</a>
         </div>
         <div class="col-lg-3">
-          <a href="./coplist">쿠폰함</a>
+          <a href="./coplist?idx=1">쿠폰함</a>
         </div>
         <div class="col-lg-3">
           <a href="#">적립금</a>

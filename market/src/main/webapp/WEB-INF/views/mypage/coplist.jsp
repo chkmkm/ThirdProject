@@ -11,6 +11,14 @@
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var delurl = window.location.search.substring(1);
+		var array = delurl.split('=');
+		var cnt = array[1]-1;
+		$('.pagecnt').eq(cnt).attr('class','active');
+	});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -19,7 +27,7 @@
 				<jsp:include page="pageside.jsp"/>
 			</div>
 			<div class="col-lg-10">
-				<h3>상품주문내역</h3>
+				<h3>쿠폰함</h3>
 				<div class="coupon_list">
 					<table class="table table-bordered">
 						<tr>
@@ -27,7 +35,7 @@
 							<td>할인율</td>
 							<td>기  간</td>
 						</tr>
-					<c:forEach items="coplist" var="bean">
+					<c:forEach items="${coplist }" var="bean">
 						<tr>
 							<td>${bean.cpname }</td>
 							<td>${bean.cpdis }</td>
@@ -38,17 +46,15 @@
 					<nav>
 					  <ul class="pagination">
 					    <li>
-					      <a href="#" aria-label="Previous">
+					      <a href="./coplist?idx=1" aria-label="Previous">
 					        <span aria-hidden="true">&laquo;</span>
 					      </a>
 					    </li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
+					    <c:forEach var="i" begin="1" end="${pTot }" step="1">
+						    <li class="pagecnt"><a href="./coplist?idx=${i }">${i }</a></li>
+					    </c:forEach>
 					    <li>
-					      <a href="#" aria-label="Next">
+					      <a href="./coplist?idx=${pTot }" aria-label="Next">
 					        <span aria-hidden="true">&raquo;</span>
 					      </a>
 					    </li>
