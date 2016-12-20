@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gl.market.model.UserCopVo;
 import com.gl.market.model.UserJoinVo;
 import com.gl.market.model.UserMypageDao;
+import com.gl.market.model.UserOrderVo;
 
 @Controller
 public class UserMyCon {
@@ -34,7 +35,26 @@ public class UserMyCon {
 	}
 	
 	@RequestMapping("/julist")
-	public String juList(){
+	public String juList(@RequestParam("idx")int idx ,Model model, HttpServletRequest req){
+		session = req.getSession();
+		int p=idx;
+		int row = 10;
+		int rowTot=1;
+		int stert = (p-1)*row+1;
+		int end = stert+(row-1);
+		String id = (String)session.getAttribute("id");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("stert", stert);
+		map.put("end", end);
+		System.out.println(map.get("id")+":"+map.get("stert")+":"+map.get("end"));
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		rowTot = mapper.jumunCk(id);
+		List<UserOrderVo> list = mapper.juList(map);
+		System.out.println(list.size());
+		int pTot = (rowTot-1)/row+1;
+		model.addAttribute("pTot", pTot);
+		model.addAttribute("julist", list);
 		return "mypage/julist";
 	}
 	
@@ -61,7 +81,6 @@ public class UserMyCon {
 		rowTot = mapper.copCk(id);
 		List<UserCopVo> list = mapper.copList(map);
 		int pTot = (rowTot-1)/row+1;
-		
 		model.addAttribute("pTot", pTot);
 		model.addAttribute("coplist", list);
 		return "mypage/coplist";

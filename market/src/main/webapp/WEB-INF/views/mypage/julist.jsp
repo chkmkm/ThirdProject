@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,14 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var delurl = window.location.search.substring(1);
+		var array = delurl.split('=');
+		var cnt = array[1]-1;
+		$('.pagecnt').eq(cnt).attr('class','active');
+	});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -23,25 +32,42 @@
 					<table class="table table-bordered">
 						<tr>
 							<td>주문일자</td>
-							<td>주문 상세 정보</td>
+							<td colspan="2">주문 상세 정보</td>
 							<td>상품금액</td>
-							<td>주문상태</td>
+							<td>주문확인/취소</td>
 						</tr>
+					<c:if test="${julist.size() != 0}">
+						<c:forEach items="${julist }" var="bean">
+						<tr>
+							<td>${bean.payment }</td>
+							<td>썸네일</td>
+							<td>임시내용</td>
+							<td>임시금액</td>
+							<td>
+								<button type="button" class="btn btn-primary">상세보기</button>
+								<button type="button" class="btn btn-primary">주문취소</button>
+							</td>
+						</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${julist.size() == 0}">
+						<tr>
+							<td colspan="4">주문내역이 없습니다.</td>
+						</tr>
+					</c:if>		
 					</table>
 					<nav>
 					  <ul class="pagination">
 					    <li>
-					      <a href="#" aria-label="Previous">
+					      <a href="./julist?idx=1" aria-label="Previous">
 					        <span aria-hidden="true">&laquo;</span>
 					      </a>
 					    </li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
+					    <c:forEach var="i" begin="1" end="${pTot }" step="1">
+						    <li class="pagecnt"><a href="./julist?idx=${i }">${i }</a></li>
+					    </c:forEach>
 					    <li>
-					      <a href="#" aria-label="Next">
+					      <a href="./julist?idx=${pTot }" aria-label="Next">
 					        <span aria-hidden="true">&raquo;</span>
 					      </a>
 					    </li>

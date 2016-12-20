@@ -9,11 +9,17 @@
   	<select id="copList" parameterType="hashmap" resultType="com.gl.market.model.UserCopVo">
   	SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM (SELECT ROWNUM AS RN, A.* FROM (SELECT CPID,CPNAME,CPDIS,USID,CPDATA FROM COUPON WHERE USID=#{id})A) WHERE RN BETWEEN #{stert} AND #{end} ORDER BY CPID ASC 
   	</select>
+  	<select id="juList" parameterType="hashmap" resultType="com.gl.market.model.UserOrderVo">
+  	SELECT ORDERID,PROID,USERID,PEOPLE,PAYMENT,CANCEL FROM (SELECT ROWNUM AS RN, A.* FROM (SELECT ORDERID,PROID,USERID,PEOPLE,PAYMENT,CANCEL FROM ODRLIST WHERE USERID=#{id})A) WHERE RN BETWEEN #{stert} AND #{end} ORDER BY ORDERID DESC 
+  	</select>
   	<select id="mileCk" parameterType="String" resultType="com.gl.market.model.UserJoinVo">
   	SELECT CASH FROM CUSTOMER WHERE ID=#{value}
   	</select>
   	<select id="copCk" parameterType="String" resultType="int">
   	SELECT COUNT(*) AS CNT FROM COUPON WHERE USID=#{value}
+  	</select>
+  	<select id="jumunCk" parameterType="String" resultType="int">
+  	SELECT COUNT(*) AS CNT FROM ODRLIST WHERE USERID=#{value}
   	</select>
   	<update id="userUpdata" parameterType="com.gl.market.model.UserJoinVo">
   	UPDATE CUSTOMER SET PW=#{pw},NAME=#{name},PHONE=#{phone} WHERE ID=#{id}

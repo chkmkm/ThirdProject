@@ -73,7 +73,7 @@
 
       <div class="row marketing">
         <div class="col-lg-3">
-          <a href="./julist">주문내역</a>
+          <a href="./julist?idx=1">주문내역</a>
         </div>
         <div class="col-lg-3">
           <a href="#">위시리스트</a>
@@ -91,7 +91,7 @@
           <a href="./coplist?idx=1">쿠폰함</a>
         </div>
         <div class="col-lg-3">
-          <a href="#">적립금</a>
+          <a href="#">1:1문의내역</a>
         </div>
         <div class="col-lg-3">
           <a href="#">고객센터</a>

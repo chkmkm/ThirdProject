@@ -63,7 +63,7 @@
 		<div class="side_menu">
 			<div class="menu_head">상품관련정보</div>
 			<div class="menu_cont">
-				<a href="./julist">상품주문내역</a>
+				<a href="./julist?idx=1">상품주문내역</a>
 			</div>
 			<div class="menu_cont">
 				<a href="#">위시리스트</a>

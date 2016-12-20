@@ -11,5 +11,7 @@ public interface UserMypageDao {
 	List<UserCopVo> copList(HashMap<String,Object> map);
 	void userUpdata(UserJoinVo data);
 	void userDelete(String id);
+	int jumunCk(String id);
+	List<UserOrderVo> juList(HashMap<String, Object> map);
 	
 }
