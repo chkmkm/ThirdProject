@@ -79,10 +79,10 @@
           <a href="#">위시리스트</a>
         </div>
         <div class="col-lg-3">
-          <a href="#">장바구니</a>
+          <a href="./basket?idx=1">장바구니</a>
         </div>
         <div class="col-lg-3">
-          <a href="#">결제취소내역</a>
+          <a href="./cnllist?idx=1">결제취소내역</a>
         </div>
         <div class="col-lg-3">
           <a href="./editform">개인정보수정</a>

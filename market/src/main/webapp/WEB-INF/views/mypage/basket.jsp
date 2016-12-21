@@ -13,9 +13,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function cancel(data) {
-		var ordid = data;
-		if (confirm("주문을 취소 하시겠습니까?")) {
-			window.location.href = "./jucnl?idx="+ordid;
+		var basketid = data;
+		if (confirm("해당 상품을 장바구니에서 삭제 하시겠습니까?")) {
+			window.location.href = "./bkcnl?idx="+basketid;
         }else {
             return false;
         }
@@ -38,55 +38,48 @@
 				<jsp:include page="pageside.jsp"/>
 			</div>
 			<div class="col-lg-10">
-				<h3>상품주문내역</h3>
-				<div class="jumun_list">
+				<h3>장바구니</h3>
+				<div class="basket_list">
 					<table class="table table-bordered">
 						<tr>
-							<td>주문일자</td>
+							<td>등록일</td>
 							<td colspan="2">주문 상세 정보</td>
 							<td>상품금액</td>
-							<td>주문확인/취소</td>
+							<td>주문</td>
 						</tr>
-					<c:if test="${julist.size() != 0}">
-						<c:forEach items="${julist }" var="bean">
+					<c:if test="${bklist.size() != 0}">
+						<c:forEach items="${bklist }" var="bean">
 						<tr>
 							<td>${bean.payd }</td>
 							<td>${bean.thumb }</td>
 							<td>${bean.proname }</td>
-							<td>${bean.paycash }</td>
+							<td>${bean.price }</td>
 							<td>
 								<button type="button" class="btn btn-primary">상세보기</button>
-								<c:if test="${bean.cancel == 0 }">
-								<button type="button" class="btn btn-primary" onclick="cancel('${bean.orderid }');">주문취소</button>
-								</c:if>
-								<c:if test="${bean.cancel == 1 }">
-								<p>취소중</p>
-								</c:if>
-								<c:if test="${bean.cancel == 2 }">
-								<p>취소완료</p>
-								</c:if>
+								<button type="button" class="btn btn-primary" onclick="cancel('${bean.proid }');">주문하기</button>
+								<button type="button" class="btn btn-primary" onclick="cancel('${bean.basketid }');">삭제하기</button>
 							</td>
 						</tr>
 						</c:forEach>
 					</c:if>
-					<c:if test="${julist.size() == 0}">
+					<c:if test="${bklist.size() == 0}">
 						<tr>
-							<td colspan="5">주문내역이 없습니다.</td>
+							<td colspan="5">장바구니가 비었습니다.</td>
 						</tr>
 					</c:if>		
 					</table>
 					<nav>
 					  <ul class="pagination">
 					    <li>
-					      <a href="./julist?idx=1" aria-label="Previous">
+					      <a href="./basket?idx=1" aria-label="Previous">
 					        <span aria-hidden="true">&laquo;</span>
 					      </a>
 					    </li>
 					    <c:forEach var="i" begin="1" end="${pTot }" step="1">
-						    <li class="pagecnt"><a href="./julist?idx=${i }">${i }</a></li>
+						    <li class="pagecnt"><a href="./basket?idx=${i }">${i }</a></li>
 					    </c:forEach>
 					    <li>
-					      <a href="./julist?idx=${pTot }" aria-label="Next">
+					      <a href="./basket?idx=${pTot }" aria-label="Next">
 					        <span aria-hidden="true">&raquo;</span>
 					      </a>
 					    </li>

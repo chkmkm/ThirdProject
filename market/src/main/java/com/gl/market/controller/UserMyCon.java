@@ -47,15 +47,57 @@ public class UserMyCon {
 		map.put("id", id);
 		map.put("stert", stert);
 		map.put("end", end);
-		System.out.println(map.get("id")+":"+map.get("stert")+":"+map.get("end"));
 		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
 		rowTot = mapper.jumunCk(id);
 		List<UserOrderVo> list = mapper.juList(map);
-		System.out.println(list.size());
 		int pTot = (rowTot-1)/row+1;
 		model.addAttribute("pTot", pTot);
 		model.addAttribute("julist", list);
 		return "mypage/julist";
+	}
+	
+	@RequestMapping("/cnllist")
+	public String cnlList(@RequestParam("idx")int idx ,Model model, HttpServletRequest req){
+		session = req.getSession();
+		int p=idx;
+		int row = 10;
+		int rowTot=1;
+		int stert = (p-1)*row+1;
+		int end = stert+(row-1);
+		String id = (String)session.getAttribute("id");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("stert", stert);
+		map.put("end", end);
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		rowTot = mapper.cancelCk(id);
+		List<UserOrderVo> list = mapper.cnlList(map);
+		int pTot = (rowTot-1)/row+1;
+		model.addAttribute("pTot", pTot);
+		model.addAttribute("cnlist", list);
+		return "mypage/cnllist";
+	}
+	
+	@RequestMapping("/basket")
+	public String basket(@RequestParam("idx")int idx ,Model model, HttpServletRequest req){
+		session = req.getSession();
+		int p=idx;
+		int row = 10;
+		int rowTot=1;
+		int stert = (p-1)*row+1;
+		int end = stert+(row-1);
+		String id = (String)session.getAttribute("id");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("stert", stert);
+		map.put("end", end);
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		rowTot = mapper.basketCk(id);
+		List<UserOrderVo> list = mapper.bkList(map);
+		int pTot = (rowTot-1)/row+1;
+		model.addAttribute("pTot", pTot);
+		model.addAttribute("bklist", list);
+		return "mypage/basket";
 	}
 	
 	@RequestMapping("/outform")
@@ -149,6 +191,19 @@ public class UserMyCon {
 		mapper.userDelete(id);
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/jucnl")
+	public String jucnl(@RequestParam("idx")String orderid){
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		mapper.juCancel(orderid);
+		return "redirect:/julist?idx=1";
+	}
+	@RequestMapping("/bkcnl")
+	public String bkcnl(@RequestParam("idx")String basketid){
+		UserMypageDao mapper = sqlSession.getMapper(UserMypageDao.class);
+		mapper.bkCancel(basketid);
+		return "redirect:/basket?idx=1";
 	}
 	
 }

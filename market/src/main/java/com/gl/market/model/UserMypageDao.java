@@ -13,5 +13,11 @@ public interface UserMypageDao {
 	void userDelete(String id);
 	int jumunCk(String id);
 	List<UserOrderVo> juList(HashMap<String, Object> map);
+	void juCancel(String orderid);
+	int cancelCk(String id);
+	List<UserOrderVo> cnlList(HashMap<String, Object> map);
+	int basketCk(String id);
+	List<UserOrderVo> bkList(HashMap<String, Object> map);
+	void bkCancel(String basketid);
 	
 }

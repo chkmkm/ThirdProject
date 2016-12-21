@@ -2,43 +2,38 @@ package com.gl.market.model;
 
 import java.sql.Date;
 
-public class UserOrderVo {
+public class UserBasketVo {
 	
-	private String orderid;
+	private String basketid;
 	private String proid;
 	private String customid;
-	private int goperson;
-	private String payd;
-	private int cancel;
-	private int paycash;
+	private Date payd;
 	private String proname;
+	private int price;
 	private String thumb;
 	
-	public UserOrderVo() {
+	public UserBasketVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserOrderVo(String orderid, String proid, String customid,
-			int goperson, String payd, int cancel, int paycash, String proname,
-			String thumb) {
+	public UserBasketVo(String basketid, String proid, String customid,
+			Date payd, String proname, int price, String thumb) {
 		super();
-		this.orderid = orderid;
+		this.basketid = basketid;
 		this.proid = proid;
 		this.customid = customid;
-		this.goperson = goperson;
 		this.payd = payd;
-		this.cancel = cancel;
-		this.paycash = paycash;
 		this.proname = proname;
+		this.price = price;
 		this.thumb = thumb;
 	}
 
-	public String getOrderid() {
-		return orderid;
+	public String getBasketid() {
+		return basketid;
 	}
 
-	public void setOrderid(String orderid) {
-		this.orderid = orderid;
+	public void setBasketid(String basketid) {
+		this.basketid = basketid;
 	}
 
 	public String getProid() {
@@ -57,36 +52,12 @@ public class UserOrderVo {
 		this.customid = customid;
 	}
 
-	public int getGoperson() {
-		return goperson;
-	}
-
-	public void setGoperson(int goperson) {
-		this.goperson = goperson;
-	}
-
-	public String getPayd() {
+	public Date getPayd() {
 		return payd;
 	}
 
-	public void setPayd(String payd) {
+	public void setPayd(Date payd) {
 		this.payd = payd;
-	}
-
-	public int getCancel() {
-		return cancel;
-	}
-
-	public void setCancel(int cancel) {
-		this.cancel = cancel;
-	}
-
-	public int getPaycash() {
-		return paycash;
-	}
-
-	public void setPaycash(int paycash) {
-		this.paycash = paycash;
 	}
 
 	public String getProname() {
@@ -95,6 +66,14 @@ public class UserOrderVo {
 
 	public void setProname(String proname) {
 		this.proname = proname;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public String getThumb() {
@@ -109,13 +88,12 @@ public class UserOrderVo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cancel;
+		result = prime * result
+				+ ((basketid == null) ? 0 : basketid.hashCode());
 		result = prime * result
 				+ ((customid == null) ? 0 : customid.hashCode());
-		result = prime * result + goperson;
-		result = prime * result + ((orderid == null) ? 0 : orderid.hashCode());
-		result = prime * result + paycash;
 		result = prime * result + ((payd == null) ? 0 : payd.hashCode());
+		result = prime * result + price;
 		result = prime * result + ((proid == null) ? 0 : proid.hashCode());
 		result = prime * result + ((proname == null) ? 0 : proname.hashCode());
 		result = prime * result + ((thumb == null) ? 0 : thumb.hashCode());
@@ -130,27 +108,23 @@ public class UserOrderVo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserOrderVo other = (UserOrderVo) obj;
-		if (cancel != other.cancel)
+		UserBasketVo other = (UserBasketVo) obj;
+		if (basketid == null) {
+			if (other.basketid != null)
+				return false;
+		} else if (!basketid.equals(other.basketid))
 			return false;
 		if (customid == null) {
 			if (other.customid != null)
 				return false;
 		} else if (!customid.equals(other.customid))
 			return false;
-		if (goperson != other.goperson)
-			return false;
-		if (orderid == null) {
-			if (other.orderid != null)
-				return false;
-		} else if (!orderid.equals(other.orderid))
-			return false;
-		if (paycash != other.paycash)
-			return false;
 		if (payd == null) {
 			if (other.payd != null)
 				return false;
 		} else if (!payd.equals(other.payd))
+			return false;
+		if (price != other.price)
 			return false;
 		if (proid == null) {
 			if (other.proid != null)
@@ -172,10 +146,11 @@ public class UserOrderVo {
 
 	@Override
 	public String toString() {
-		return "UserOrderVo [orderid=" + orderid + ", proid=" + proid
-				+ ", customid=" + customid + ", goperson=" + goperson
-				+ ", payd=" + payd + ", cancel=" + cancel + ", paycash="
-				+ paycash + ", proname=" + proname + ", thumb=" + thumb + "]";
+		return "UserBasketVo [basketid=" + basketid + ", proid=" + proid
+				+ ", customid=" + customid + ", payd=" + payd + ", proname="
+				+ proname + ", price=" + price + ", thumb=" + thumb + "]";
 	}
+
+	
 	
 }

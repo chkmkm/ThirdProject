@@ -69,10 +69,13 @@
 				<a href="#">위시리스트</a>
 			</div>
 			<div class="menu_cont">
-				<a href="#">장바구니</a>
+				<a href="./basket?idx=1">장바구니</a>
 			</div>
 			<div class="menu_cont">
-				<a href="#">결제취소내역</a>
+				<a href="./coplist?idx=1">쿠폰함</a>
+			</div>
+			<div class="menu_cont">
+				<a href="./cnllist?idx=1">결제취소내역</a>
 			</div>
 			<div class="menu_head">회원관련정보</div>
 			<div class="menu_cont">

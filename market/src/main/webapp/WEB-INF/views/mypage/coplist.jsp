@@ -38,9 +38,9 @@
 					<c:if test="${coplist.size() != 0}">
 						<c:forEach items="${coplist }" var="bean">
 						<tr>
-							<td>${bean.cpname }</td>
-							<td>${bean.cpdis }</td>
-							<td>${bean.cpdata }</td>
+							<td>${bean.cupname }</td>
+							<td>${bean.percent }</td>
+							<td>${bean.cupperi }</td>
 						</tr>
 						</c:forEach>
 					</c:if>

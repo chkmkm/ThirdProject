@@ -4,80 +4,76 @@ import java.sql.Date;
 
 public class UserCopVo {
 	
-	private String cpid;
-	private String cpname;
-	private String cpdis;
-	private String usid;
-	private Date cpdata;
+	private String cupid;
+	private String cupname;
+	private int percent;
+	private String customid;
+	private String cupperi;
 	
 	public UserCopVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserCopVo(String cpid, String cpname, String cpdis, String usid,
-			Date cpdata) {
+	public UserCopVo(String cupid, String cupname, int percent,
+			String customid, String cupperi) {
 		super();
-		this.cpid = cpid;
-		this.cpname = cpname;
-		this.cpdis = cpdis;
-		this.usid = usid;
-		this.cpdata = cpdata;
+		this.cupid = cupid;
+		this.cupname = cupname;
+		this.percent = percent;
+		this.customid = customid;
+		this.cupperi = cupperi;
 	}
 
-	public String getCpid() {
-		return cpid;
+	public String getCupid() {
+		return cupid;
 	}
 
-	public void setCpid(String cpid) {
-		this.cpid = cpid;
+	public void setCupid(String cupid) {
+		this.cupid = cupid;
 	}
 
-	public String getCpname() {
-		return cpname;
+	public String getCupname() {
+		return cupname;
 	}
 
-	public void setCpname(String cpname) {
-		this.cpname = cpname;
+	public void setCupname(String cupname) {
+		this.cupname = cupname;
 	}
 
-	public String getCpdis() {
-		return cpdis;
+	public int getPercent() {
+		return percent;
 	}
 
-	public void setCpdis(String cpdis) {
-		this.cpdis = cpdis;
+	public void setPercent(int percent) {
+		this.percent = percent;
 	}
 
-	public String getUsid() {
-		return usid;
+	public String getCustomid() {
+		return customid;
 	}
 
-	public void setUsid(String usid) {
-		this.usid = usid;
+	public void setCustomid(String customid) {
+		this.customid = customid;
 	}
 
-	public Date getCpdata() {
-		return cpdata;
+	public String getCupperi() {
+		return cupperi;
 	}
 
-	public void setCpdata(Date cpdata) {
-		this.cpdata = cpdata;
-	}
-
-	@Override
-	public String toString() {
-		return "UserCopVo [cpid=" + cpid + ", cpname=" + cpname + ", cpdis="
-				+ cpdis + ", usid=" + usid + ", cpdata=" + cpdata + "]";
+	public void setCupperi(String cupperi) {
+		this.cupperi = cupperi;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cpdis == null) ? 0 : cpdis.hashCode());
-		result = prime * result + ((cpid == null) ? 0 : cpid.hashCode());
-		result = prime * result + ((cpname == null) ? 0 : cpname.hashCode());
-		result = prime * result + ((usid == null) ? 0 : usid.hashCode());
+		result = prime * result + ((cupid == null) ? 0 : cupid.hashCode());
+		result = prime * result + ((cupname == null) ? 0 : cupname.hashCode());
+		result = prime * result + ((cupperi == null) ? 0 : cupperi.hashCode());
+		result = prime * result
+				+ ((customid == null) ? 0 : customid.hashCode());
+		result = prime * result + percent;
 		return result;
 	}
 
@@ -90,29 +86,42 @@ public class UserCopVo {
 		if (getClass() != obj.getClass())
 			return false;
 		UserCopVo other = (UserCopVo) obj;
-		if (cpdis == null) {
-			if (other.cpdis != null)
+		if (cupid == null) {
+			if (other.cupid != null)
 				return false;
-		} else if (!cpdis.equals(other.cpdis))
+		} else if (!cupid.equals(other.cupid))
 			return false;
-		if (cpid == null) {
-			if (other.cpid != null)
+		if (cupname == null) {
+			if (other.cupname != null)
 				return false;
-		} else if (!cpid.equals(other.cpid))
+		} else if (!cupname.equals(other.cupname))
 			return false;
-		if (cpname == null) {
-			if (other.cpname != null)
+		if (cupperi == null) {
+			if (other.cupperi != null)
 				return false;
-		} else if (!cpname.equals(other.cpname))
+		} else if (!cupperi.equals(other.cupperi))
 			return false;
-		if (usid == null) {
-			if (other.usid != null)
+		if (customid == null) {
+			if (other.customid != null)
 				return false;
-		} else if (!usid.equals(other.usid))
+		} else if (!customid.equals(other.customid))
+			return false;
+		if (percent != other.percent)
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "UserCopVo [cupid=" + cupid + ", cupname=" + cupname
+				+ ", percent=" + percent + ", customid=" + customid
+				+ ", cupperi=" + cupperi + "]";
+	}
 	
+	
+	
+	
+
 	
 	
 }
