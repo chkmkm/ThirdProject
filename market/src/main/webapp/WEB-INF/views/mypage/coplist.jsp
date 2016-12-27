@@ -9,8 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link href="/market/css/bootstrap.min.css" rel="stylesheet">
+<link href="/market/css/offcanvas.css" rel="stylesheet">
+<link href="/market/fonts/**" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/market/js/bootstrap.min.js"></script>
+<script src="/market/js/offcanvas.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var delurl = window.location.search.substring(1);
@@ -21,12 +24,15 @@
 </script>
 </head>
 <body>
-	<div class="content">
-		<div class="row marketing">
-			<div class="col-lg-2">
+	<div class="container">
+		<div class="row marketing row-offcanvas row-offcanvas-left">
 				<jsp:include page="pageside.jsp"/>
-			</div>
-			<div class="col-lg-10">
+			<div class="col-xs-12 col-sm-10">
+				<p class="pull-left visible-xs">
+					<button type="button" id="side_btn" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+						<span class="glyphicon glyphicon-list" aria-hidden="true"/>
+					</button>
+				</p>
 				<h3>쿠폰함</h3>
 				<div class="coupon_list">
 						<div class="col-md-4 col-xs-4">쿠폰명</div>
