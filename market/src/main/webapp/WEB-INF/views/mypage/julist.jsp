@@ -11,6 +11,11 @@
 <link href="/market/css/bootstrap.min.css" rel="stylesheet">
 <link href="/market/css/offcanvas.css" rel="stylesheet">
 <link href="/market/fonts/**" rel="stylesheet">
+<style type="text/css">
+	.container{
+		overflow: hidden;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/market/js/bootstrap.min.js"></script>
 <script src="/market/js/offcanvas.js"></script>
@@ -26,19 +31,33 @@
 	}
 
 	$(document).ready(function() {
+		
 		var delurl = window.location.search.substring(1);
 		var array = delurl.split('=');
 		var cnt = array[1]-1;
 		$('.pagecnt').eq(cnt).attr('class','active');
+		
+		var side = $('#sidebar').height();
+		var cont = $('.container').height(); 
+		if(cont<side){
+			$('.container').height(side);
+		}else{
+			$('#sidebar').height(cont);
+		}
 	});
 </script>
 </head>
 <body>
+	<div class = "header" >
+		<%@ include file = "../../header/header.jsp" %>
+	</div>
 	<div class="container">
-		<div class="row marketing row-offcanvas row-offcanvas-left">
-				<jsp:include page="pageside.jsp"/>
+		<div class="row marketing row-offcanvas row-offcanvas-right">
+		<%@ include file = "pageside.jsp" %>
+				<%-- <jsp:include page="pageside.jsp"/> --%>
+				
 			<div class="col-xs-12 col-sm-10">
-				<p class="pull-left visible-xs">
+				<p class="pull-right visible-xs">
 					<button type="button" id="side_btn" class="btn btn-primary btn-xs" data-toggle="offcanvas">
 						<span class="glyphicon glyphicon-list" aria-hidden="true"/>
 					</button>
@@ -97,6 +116,10 @@
 					</nav>
 				</div>
 			</div>
+		</div>	
+	</div>
+	<div class="footer">
+		<jsp:include page="../../footer/footer.jsp"/>
 	</div>
 </body>
 </html>
